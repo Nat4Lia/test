@@ -529,7 +529,7 @@ class Mesin(metode):
             return hasil
 
     def status(self):
-        
+        tulisan = None
         token = encrypt(    str(self.tujuan)+
                             str(Mesin.versiSoftware)+
                             str(Mesin.jumlahMac)+
@@ -553,10 +553,15 @@ class Mesin(metode):
                                             'instansi_id'           : instansi_id.ID_INSTANSI,
                                             'token'                 : token
                                         }))
+        
+        if hasil :
+            tulisan = 'ÇONNECTED'
+        else:
+            tulisan = 'DISCONNECTED'
 
         tampil.teks(text1='VERSI : %s' % Mesin.versiSoftware, 
                     text2='JUMLAH PEGAWAI : %s' % Mesin.jumlahPegawai, 
-                    text3='KIRIM STATUS : %s' % hasil)
+                    text3='STATUS : %s' % tulisan)
         
         
 def main_Program(IP_Address):
@@ -646,7 +651,7 @@ def main_Program(IP_Address):
     except Exception:
         logger.error(Exception)
         tampil.teks(text1='ERROR',text2='RESTART',text3='RASPBERRY')
-        exit()
+        run('sudo reboot', shell=True)
         
 
 # for pegawai in update_Pegawai:
