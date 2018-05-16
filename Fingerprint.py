@@ -555,7 +555,7 @@ class Mesin(metode):
                                         }))
         
         if hasil :
-            tulisan = 'ÇONNECTED'
+            tulisan = 'CONNECTED'
         else:
             tulisan = 'DISCONNECTED'
 
